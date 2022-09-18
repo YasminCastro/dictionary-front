@@ -1,4 +1,5 @@
 import Layout from '@/components/Global/Layout';
+import Login from '@/components/Pages/Index/Login';
 import { PageContainer, PageWrapper } from '@/styles/Page';
 import type { NextPage } from 'next';
 
@@ -7,7 +8,9 @@ const Home: NextPage = () => {
     <>
       <Layout>
         <PageWrapper>
-          <PageContainer></PageContainer>
+          <PageContainer>
+            <Login />
+          </PageContainer>
         </PageWrapper>
       </Layout>
     </>
