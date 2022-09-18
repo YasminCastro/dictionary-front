@@ -16,4 +16,8 @@ export const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  h1 {
+    margin-top: 100px;
+  }
 `;

@@ -9,6 +9,7 @@ const Home: NextPage = () => {
       <Layout>
         <PageWrapper>
           <PageContainer>
+            <h1>Dictionary</h1>
             <Login />
           </PageContainer>
         </PageWrapper>
