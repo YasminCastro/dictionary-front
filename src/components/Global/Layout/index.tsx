@@ -1,14 +1,19 @@
-import type { NextPage } from 'next';
+import styled from 'styled-components';
 import Footer from '../Footer';
 import Header from '../Header';
 
-const Home: NextPage = () => {
+const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <>
       <Header />
+      <MainContainer>{children}</MainContainer>
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default Layout;
+
+const MainContainer = styled.main`
+  padding-top: 56px;
+`;
