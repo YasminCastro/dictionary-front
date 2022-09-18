@@ -10,33 +10,19 @@ export const Container = styled.div`
 
   background-color: ${colors.white};
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
-
-  h2 {
-    font-size: 24px;
-    line-height: 36px;
-
-    font-weight: bold;
-    color: ${colors.black500};
-  }
+  box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 2px 2px;
 
   form {
     display: flex;
     flex-direction: column;
 
-    width: 100%;
-
     margin-top: 24px;
 
     > button {
-      position: relative;
-
-      height: 56px;
-
       margin-top: 16px;
-      /* margin-bottom: 16px; */
 
-      background: ${colors.black500};
+      background: ${colors.blue350};
+
       border: 0;
       border-radius: 8px;
 
@@ -50,37 +36,15 @@ export const Container = styled.div`
       transition: background linear 0.3s;
 
       :hover:enabled {
-        background: ${colors.black500};
+        background: ${colors.blue700};
       }
     }
+  }
 
-    > p {
-      align-self: center;
-
-      margin-top: 16px;
-
-      font-size: 16px;
-      line-height: 24px;
-
-      font-weight: normal;
-      color: ${colors.white800};
-
-      button {
-        background-color: transparent;
-        border: 0;
-        color: ${colors.black500};
-        transition: color 0.2s linear;
-
-        font-size: 16px;
-        line-height: 24px;
-
-        font-weight: normal;
-
-        :hover {
-          color: ${colors.black500};
-          text-decoration: underline;
-        }
-      }
+  > button {
+    color: ${colors.blue350};
+    :hover {
+      text-decoration: underline;
     }
   }
 
