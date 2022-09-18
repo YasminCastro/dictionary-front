@@ -7,7 +7,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     const { data } = await api.post('/auth/signup', { name, email, password });
-    console.log(data);
     return res.status(200).json(data);
   } catch (error: any) {
     return res.status(500).json({ message: error.response.data.message });
