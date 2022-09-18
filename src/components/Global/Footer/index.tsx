@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
         <SocialMediaContainer>
           <Link
-            href="https://www.linkedin.com/company/carvalima-transportes/"
+            href="https://www.linkedin.com/in/yasmin-castro-b579451b8"
             passHref
           >
             <a target="_blank">
