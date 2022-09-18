@@ -8,8 +8,7 @@ import { AuthContext } from '@/providers/AuthContext';
 import { PageContainer, PageWrapper } from '@/styles/Page/dashboard';
 
 import Layout from '@/components/Global/Layout';
-import RightSide from '@/components/Pages/Dashboard/RightSide';
-import LeftSide from '@/components/Pages/Dashboard/LeftSide';
+import DashboardContainer from '@/components/Pages/Dashboard';
 
 const Dashboard: NextPage = () => {
   const { user } = useContext(AuthContext);
@@ -22,8 +21,7 @@ const Dashboard: NextPage = () => {
       <Layout>
         <PageWrapper>
           <PageContainer>
-            <RightSide />
-            <LeftSide />
+            <DashboardContainer />
           </PageContainer>
         </PageWrapper>
       </Layout>
