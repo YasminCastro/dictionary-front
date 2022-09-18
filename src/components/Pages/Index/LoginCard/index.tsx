@@ -1,32 +1,37 @@
 import { Button, TextField } from '@mui/material';
 import { IStepActive } from '../Login';
 import { Container } from './styles';
-import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { SubmitErrorMessage } from '@/styles/Page/global';
+import { AuthContext } from '@/providers/AuthContext';
 
 interface IProps {
   setCardActive: React.Dispatch<React.SetStateAction<IStepActive>>;
 }
 
-interface ILogin {
-  email: string;
-  password: string;
-}
-
 const LoginCard: React.FC<IProps> = ({ setCardActive }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const { signIn } = useContext(AuthContext);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(password, email);
 
     try {
-      const response = await axios.post('/api/signin', {
-        email,
-        password,
-      });
-    } catch (error) {}
+      await signIn({ email, password });
+    } catch (error: any) {
+      const errorMessageRaws = error.response.data.message;
+      if (errorMessageRaws.includes('Email not found')) {
+        setErrorMessage('Usuário não encontrado');
+      } else if (errorMessageRaws.includes('Password is not matching')) {
+        setErrorMessage('Senha incorreta.');
+      } else {
+        setErrorMessage(
+          'Ocorreu um erro no login, tente novamente mais tarde.'
+        );
+      }
+    }
   };
 
   return (
@@ -43,13 +48,18 @@ const LoginCard: React.FC<IProps> = ({ setCardActive }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
-          label="Password"
+          label="Senha"
           variant="filled"
           type="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errorMessage && (
+          <SubmitErrorMessage className="onSubmitErrorMessage">
+            {errorMessage}
+          </SubmitErrorMessage>
+        )}
         <Button type="submit" variant="contained" color="primary">
           Signin
         </Button>
