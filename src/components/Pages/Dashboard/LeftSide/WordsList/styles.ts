@@ -12,13 +12,13 @@ export const Container = styled.div`
 
 export const TableContainer = styled.div`
   border: 1px solid black;
-  columns: 4 auto;
-  column-rule-style: solid;
-  column-rule-width: 1px;
+
+  display: grid;
+  grid-template-columns: 180px 180px 180px 180px;
 `;
 
 export const WordContainer = styled.div`
   width: 100%;
   padding: 8px 6px;
-  display: flex;
+  border: 1px solid black;
 `;
