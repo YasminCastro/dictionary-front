@@ -1,11 +1,15 @@
+import { useContext, useEffect } from 'react';
+import type { GetServerSideProps, NextPage } from 'next';
+import { parseCookies } from 'nookies';
+
+import { getAPIClient } from '@/backend/axios';
+import { AuthContext } from '@/providers/AuthContext';
+
+import { PageContainer, PageWrapper } from '@/styles/Page/dashboard';
+
 import Layout from '@/components/Global/Layout';
 import RightSide from '@/components/Pages/Dashboard/RightSide';
-import { AuthContext } from '@/providers/AuthContext';
-import { PageContainer, PageWrapper } from '@/styles/Page';
-import type { GetServerSideProps, NextPage } from 'next';
-import { useContext, useEffect } from 'react';
-import { parseCookies } from 'nookies';
-import { getAPIClient } from '@/backend/axios';
+import LeftSide from '@/components/Pages/Dashboard/LeftSide';
 
 const Dashboard: NextPage = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +23,7 @@ const Dashboard: NextPage = () => {
         <PageWrapper>
           <PageContainer>
             <RightSide />
+            <LeftSide />
           </PageContainer>
         </PageWrapper>
       </Layout>

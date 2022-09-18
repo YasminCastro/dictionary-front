@@ -4,7 +4,7 @@ import { Button, TextField } from '@mui/material';
 
 import { IStepActive } from '..';
 
-import { SubmitErrorMessage } from '@/styles/Page/global';
+import { SubmitErrorMessage } from '@/styles/Global/global';
 import { Container } from './styles';
 
 interface IProps {

@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material';
 import { IStepActive } from '..';
 import { Container } from './styles';
 import { useContext, useState } from 'react';
-import { SubmitErrorMessage } from '@/styles/Page/global';
+import { SubmitErrorMessage } from '@/styles/Global/global';
 import { AuthContext } from '@/providers/AuthContext';
 
 interface IProps {
