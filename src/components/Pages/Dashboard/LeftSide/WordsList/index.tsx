@@ -1,10 +1,6 @@
 import api from '@/backend/api';
 import { useEffect, useState } from 'react';
-import { Container } from './styles';
-
-interface Words {
-  results: string[];
-}
+import { Container, TableContainer, WordContainer } from './styles';
 
 const WordsList: React.FC = () => {
   const [words, setWords] = useState<any[]>([]);
@@ -34,7 +30,6 @@ const WordsList: React.FC = () => {
     }
 
     setPage(page + 1);
-    console.log('PAGE', page);
   }
 
   async function getWords() {
@@ -51,10 +46,14 @@ const WordsList: React.FC = () => {
 
   return (
     <Container>
-      {words.map((word) => (
-        <p key={word}>{word}</p>
-      ))}
-      {loading && <>Carregando...</>}
+      <TableContainer>
+        {words.map((word) => (
+          <WordContainer>
+            <p key={word}>{word}</p>
+          </WordContainer>
+        ))}
+      </TableContainer>
+      {loading && <p>Carregando...</p>}
     </Container>
   );
 };

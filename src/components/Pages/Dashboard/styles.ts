@@ -9,11 +9,12 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
+
+  justify-content: space-between;
 
   width: 100%;
 
-  margin: 64px;
+  margin: 64px 100px;
 
   @media (max-width: 1200px) {
     margin-top: 42px;
