@@ -4,6 +4,7 @@ import { Container } from './styles';
 import { useContext, useState } from 'react';
 import { SubmitErrorMessage } from '@/styles/Page/global';
 import { AuthContext } from '@/providers/AuthContext';
+import axios from 'axios';
 
 interface IProps {
   setCardActive: React.Dispatch<React.SetStateAction<IStepActive>>;
@@ -14,24 +15,32 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const { signIn } = useContext(AuthContext);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
-      await signIn({ email, password });
+      const { data } = await axios.post('/api/signup', {
+        email,
+        password,
+        name,
+      });
+
+      setErrorMessage('');
 
       setCardActive('signIn');
     } catch (error: any) {
+      console.log(error);
       const errorMessageRaws = error.response.data.message;
-      if (errorMessageRaws.includes('Email not found')) {
-        setErrorMessage('Usuário não encontrado');
-      } else if (errorMessageRaws.includes('Password is not matching')) {
-        setErrorMessage('Senha incorreta.');
+      if (errorMessageRaws.includes('This email already exists')) {
+        setErrorMessage('Email já cadastrado');
+      } else if (errorMessageRaws.includes('password must be longer')) {
+        setErrorMessage('Senha deve conter mais de 5 caracteres.');
+      } else if (errorMessageRaws.includes('name must be longer')) {
+        setErrorMessage('Nome deve conter mais de 3 caracteres.');
       } else {
         setErrorMessage(
-          'Ocorreu um erro no login, tente novamente mais tarde.'
+          'Ocorreu um erro no cadastro, tente novamente mais tarde.'
         );
       }
     }
@@ -39,8 +48,6 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
 
   return (
     <Container>
-      <h2>Registrar</h2>
-
       <form onSubmit={handleSubmit}>
         <TextField
           label="Nome"
@@ -73,7 +80,7 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
           </SubmitErrorMessage>
         )}
         <Button type="submit" variant="contained" color="primary">
-          SignUp
+          Cadastre-se
         </Button>
       </form>
 
@@ -82,7 +89,7 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
           setCardActive('signIn');
         }}
       >
-        Voltar
+        Fazer login
       </Button>
     </Container>
   );

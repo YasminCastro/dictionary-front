@@ -38,8 +38,6 @@ const SignIn: React.FC<IProps> = ({ setCardActive }) => {
 
   return (
     <Container>
-      <h2>Entrar</h2>
-
       <form onSubmit={handleSubmit}>
         <TextField
           label="Email"
@@ -63,7 +61,7 @@ const SignIn: React.FC<IProps> = ({ setCardActive }) => {
           </SubmitErrorMessage>
         )}
         <Button type="submit" variant="contained" color="primary">
-          Signin
+          Entrar
         </Button>
       </form>
 
@@ -72,7 +70,7 @@ const SignIn: React.FC<IProps> = ({ setCardActive }) => {
           setCardActive('signUp');
         }}
       >
-        SignUp
+        Criar nova conta
       </Button>
     </Container>
   );
