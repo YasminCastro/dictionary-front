@@ -14,6 +14,4 @@ const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
 export default Layout;
 
-const MainContainer = styled.main`
-  padding-top: 56px;
-`;
+const MainContainer = styled.main``;

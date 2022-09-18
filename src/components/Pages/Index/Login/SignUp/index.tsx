@@ -1,5 +1,5 @@
 import { Button, TextField } from '@mui/material';
-import { IStepActive } from '../Login';
+import { IStepActive } from '..';
 import { Container } from './styles';
 import { useContext, useState } from 'react';
 import { SubmitErrorMessage } from '@/styles/Page/global';
@@ -9,7 +9,7 @@ interface IProps {
   setCardActive: React.Dispatch<React.SetStateAction<IStepActive>>;
 }
 
-const LoginCard: React.FC<IProps> = ({ setCardActive }) => {
+const SignUp: React.FC<IProps> = ({ setCardActive }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -20,6 +20,8 @@ const LoginCard: React.FC<IProps> = ({ setCardActive }) => {
 
     try {
       await signIn({ email, password });
+
+      setCardActive('signIn');
     } catch (error: any) {
       const errorMessageRaws = error.response.data.message;
       if (errorMessageRaws.includes('Email not found')) {
@@ -68,4 +70,4 @@ const LoginCard: React.FC<IProps> = ({ setCardActive }) => {
   );
 };
 
-export default LoginCard;
+export default SignUp;
