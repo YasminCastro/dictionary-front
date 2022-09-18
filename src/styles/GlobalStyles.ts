@@ -65,8 +65,6 @@ export const colors = {
 
   blueBurguer: '#141142',
 
-  green200: '#0CA1A4',
-
   purple100: '#E7DEFF',
   purple200: '#B0A9C4',
   purple300: '#796BC1',

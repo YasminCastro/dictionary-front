@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../GlobalStyles';
 
 export const PageWrapper = styled.div`
   width: 100%;
@@ -18,6 +19,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
 
   h1 {
+    color: ${colors.white900};
     margin-top: 100px;
   }
 `;
