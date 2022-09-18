@@ -12,6 +12,7 @@ interface IProps {
 const SignUp: React.FC<IProps> = ({ setCardActive }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const { signIn } = useContext(AuthContext);
 
@@ -38,9 +39,17 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
 
   return (
     <Container>
-      <h2>Entrar</h2>
+      <h2>Registrar</h2>
 
       <form onSubmit={handleSubmit}>
+        <TextField
+          label="Nome"
+          variant="filled"
+          type="name"
+          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <TextField
           label="Email"
           variant="filled"
@@ -57,15 +66,24 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         {errorMessage && (
           <SubmitErrorMessage className="onSubmitErrorMessage">
             {errorMessage}
           </SubmitErrorMessage>
         )}
         <Button type="submit" variant="contained" color="primary">
-          Signin
+          SignUp
         </Button>
       </form>
+
+      <Button
+        onClick={() => {
+          setCardActive('signIn');
+        }}
+      >
+        Voltar
+      </Button>
     </Container>
   );
 };

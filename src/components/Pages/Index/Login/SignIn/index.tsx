@@ -4,7 +4,6 @@ import { Container } from './styles';
 import { useContext, useState } from 'react';
 import { SubmitErrorMessage } from '@/styles/Page/global';
 import { AuthContext } from '@/providers/AuthContext';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 interface IProps {
   setCardActive: React.Dispatch<React.SetStateAction<IStepActive>>;
@@ -68,8 +67,12 @@ const SignIn: React.FC<IProps> = ({ setCardActive }) => {
         </Button>
       </form>
 
-      <Button variant="outlined" startIcon={<DeleteIcon />}>
-        Delete
+      <Button
+        onClick={() => {
+          setCardActive('signUp');
+        }}
+      >
+        SignUp
       </Button>
     </Container>
   );
