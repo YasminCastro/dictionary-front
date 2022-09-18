@@ -21,6 +21,4 @@ export const WordContainer = styled.div`
   width: 100%;
   padding: 8px 6px;
   display: flex;
-  justify-content: center;
-  border-bottom: 1px solid black;
 `;
