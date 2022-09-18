@@ -1,10 +1,11 @@
-import { Button, TextField } from '@mui/material';
-import { IStepActive } from '..';
-import { Container } from './styles';
-import { useContext, useState } from 'react';
-import { SubmitErrorMessage } from '@/styles/Page/global';
-import { AuthContext } from '@/providers/AuthContext';
+import { useState } from 'react';
 import axios from 'axios';
+import { Button, TextField } from '@mui/material';
+
+import { IStepActive } from '..';
+
+import { SubmitErrorMessage } from '@/styles/Page/global';
+import { Container } from './styles';
 
 interface IProps {
   setCardActive: React.Dispatch<React.SetStateAction<IStepActive>>;
