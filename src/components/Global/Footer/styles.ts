@@ -18,7 +18,7 @@ export const FooterWrapper = styled.footer`
 export const FooterContainer = styled.div`
   width: 100%;
 
-  padding: 40px 108px;
+  padding: 20px 108px;
 
   display: flex;
   justify-content: space-between;
