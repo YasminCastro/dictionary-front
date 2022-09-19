@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-
+import Router from 'next/router';
 import api from '@/backend/api';
 
 interface IWord {
@@ -21,6 +21,10 @@ interface IValue {
   searchWord: string;
   setSearchWord: React.Dispatch<React.SetStateAction<string>>;
   wordError: string;
+  setSearchWordIndex: React.Dispatch<React.SetStateAction<number>>;
+  searchWordIndex: number;
+  nextWord: string | null;
+  previousWord: string | null;
 }
 
 const WordContext = createContext({} as IValue);
@@ -30,14 +34,15 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
 }) => {
   const [wordDefinition, setWordDefinition] = useState({} as IWord);
   const [searchWord, setSearchWord] = useState('');
+  const [searchWordIndex, setSearchWordIndex] = useState(1);
+  const [nextWord, setNextWord] = useState(null);
+  const [previousWord, setPreviousWord] = useState(null);
   const [wordError, setWordError] = useState('');
 
   useEffect(() => {
     async function getWord() {
       try {
         const { data } = await api.get(`/entries/en/${searchWord}`);
-
-        console.log(data);
 
         if (data) {
           let phonetic = '';
@@ -67,6 +72,10 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
             meaning,
           });
           setWordError('');
+
+          if (searchWord) {
+            Router.push(`/dashboard?word=${searchWord}`);
+          }
         }
       } catch (error: any) {
         console.log(error);
@@ -90,8 +99,24 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
       searchWord,
       setSearchWord,
       wordError,
+
+      searchWordIndex,
+      setSearchWordIndex,
+      nextWord,
+      previousWord,
     }),
-    [wordDefinition, setWordDefinition, searchWord, setSearchWord, wordError]
+    [
+      wordDefinition,
+      setWordDefinition,
+      searchWord,
+      setSearchWord,
+      wordError,
+
+      searchWordIndex,
+      setSearchWordIndex,
+      nextWord,
+      previousWord,
+    ]
   );
 
   return <WordContext.Provider value={value}>{children}</WordContext.Provider>;

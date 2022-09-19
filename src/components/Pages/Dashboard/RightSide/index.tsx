@@ -2,13 +2,13 @@ import { useWord } from '@/providers/WordProvider';
 import ReactPlayer from 'react-player';
 import { ErrorMessage } from '@/styles/Global/global';
 import {
-  ButtonsContainer,
   Container,
   MeaningsContainer,
   PlayerContainer,
   WordContainer,
   Wrapper,
 } from './styles';
+import ButtonsContainer from './ButtonsContainer';
 
 const RightSide: React.FC = () => {
   const { wordDefinition, wordError, setSearchWord } = useWord();
@@ -40,10 +40,7 @@ const RightSide: React.FC = () => {
           <h2>Meanings</h2>
           <p>{wordDefinition.meaning}</p>
         </MeaningsContainer>
-        <ButtonsContainer>
-          <button>Voltar</button>
-          <button>Próximo</button>
-        </ButtonsContainer>
+        <ButtonsContainer />
       </Container>
     </Wrapper>
   );

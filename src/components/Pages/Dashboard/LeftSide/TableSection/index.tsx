@@ -3,20 +3,29 @@ import { useEffect, useState } from 'react';
 import { Container, TableContainer, WordContainer } from './styles';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useWord } from '@/providers/WordProvider';
+import Router from 'next/router';
 
 interface IProps {
   tableName: string;
 }
 
 const TableSection: React.FC<IProps> = ({ tableName }) => {
-  const { setSearchWord } = useWord();
-  const [words, setWords] = useState<any[]>([]);
+  const { searchWord, setSearchWord, setSearchWordIndex } = useWord();
   const [page, setPage] = useState(1);
+  const [words, setWords] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const url = getApiUrl(tableName);
 
   useEffect(() => {
     getWords();
+  }, []);
+
+  useEffect(() => {
+    const routerWord = Router.query.word as string;
+
+    if (!searchWord && routerWord) {
+      setSearchWord(routerWord);
+    }
   }, []);
 
   async function getWords() {
@@ -27,6 +36,11 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
     setPage(page + 1);
     setHasMore(data.hasNext);
   }
+
+  const handleOnClick = (word: string, index: number) => {
+    setSearchWord(word);
+    setSearchWordIndex(index);
+  };
 
   return (
     <Container>
@@ -42,7 +56,7 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
         }
       >
         <TableContainer>
-          {words.map((wordRaw) => {
+          {words.map((wordRaw, index) => {
             let word = wordRaw;
 
             if (tableName !== 'words-list') {
@@ -52,9 +66,9 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
             return (
               <WordContainer
                 onClick={() => {
-                  setSearchWord(word);
+                  handleOnClick(word, index);
                 }}
-                key={word}
+                key={index}
               >
                 {word}
               </WordContainer>
