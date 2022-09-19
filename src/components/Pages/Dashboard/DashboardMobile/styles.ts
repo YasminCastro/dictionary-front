@@ -14,21 +14,9 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
-
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
 
   width: 100%;
 
-  margin: 64px 100px;
-
-  @media (max-width: 1500px) {
-    margin: 32px 50px;
-  }
-
-  @media (max-width: 800px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  margin: 32px 0px;
 `;
