@@ -30,12 +30,22 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderLeft = styled.div`
-  display: flex;
-  align-items: center;
-
   margin-left: 32px;
 
   gap: 8px;
+
+  > a {
+    color: ${colors.purple600};
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
 `;
 
 export const HeaderRight = styled.div`

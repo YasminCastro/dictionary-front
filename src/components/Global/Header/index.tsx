@@ -34,6 +34,7 @@ const Header: React.FC<{ isSigInPage?: boolean }> = ({ isSigInPage }) => {
                 quality={100}
                 layout="fixed"
               />
+              Dictionary
             </a>
           </Link>
         </HeaderLeft>
