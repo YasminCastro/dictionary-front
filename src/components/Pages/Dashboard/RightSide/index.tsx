@@ -21,7 +21,7 @@ const RightSide: React.FC = () => {
     const fetchFavoriteWords = async () => {
       setIsFavoriteWord(false);
 
-      const { data } = await api.get(`/user/me/favorites?limit=50`);
+      const { data } = await api.get(`/user/me/favorites?limit=1000`);
 
       const found = data.results.find(
         (element: any) => element.word === wordDefinition.word

@@ -17,7 +17,7 @@ const LeftSide: React.FC = () => {
   const history = 'history';
 
   const [selectedTable, setSelectedTabela] = useState(
-    wordList as 'words-list' | 'favorites' | 'history'
+    favorites as 'words-list' | 'favorites' | 'history'
   );
 
   return (
