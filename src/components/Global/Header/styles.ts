@@ -44,4 +44,25 @@ export const HeaderRight = styled.div`
   justify-content: center;
 
   gap: 8px;
+
+  > button {
+    border: none;
+    cursor: pointer;
+
+    background: transparent;
+
+    font-size: 18px;
+    line-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+
+    color: ${colors.purple600};
+
+    transition: color 0.2s linear;
+
+    &:hover {
+      text-decoration: underline;
+      color: ${colors.blue400};
+    }
+  }
 `;

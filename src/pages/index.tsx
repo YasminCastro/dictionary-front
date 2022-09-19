@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <SEO title="Entrar" />
-      <Layout>
+      <Layout isSigInPage={true}>
         <PageWrapper>
           <PageContainer>
             <h1>Dictionary</h1>

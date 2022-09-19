@@ -6,8 +6,20 @@ import {
   HeaderWrapper,
 } from './styles';
 import Image from 'next/image';
+import { destroyCookie } from 'nookies';
+import Router from 'next/router';
 
-const Header: React.FC = () => {
+const Header: React.FC<{ isSigInPage?: boolean }> = ({ isSigInPage }) => {
+  if (!isSigInPage) {
+    isSigInPage = false;
+  }
+
+  async function handleLogout() {
+    destroyCookie(null, 'dictionary.token');
+
+    Router.push('/');
+  }
+
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -25,7 +37,9 @@ const Header: React.FC = () => {
             </a>
           </Link>
         </HeaderLeft>
-        <HeaderRight></HeaderRight>
+        <HeaderRight>
+          {!isSigInPage && <button onClick={handleLogout}>Sair</button>}
+        </HeaderRight>
       </HeaderContainer>
     </HeaderWrapper>
   );
