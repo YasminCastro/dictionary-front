@@ -5,6 +5,7 @@ import { PageContainer, PageWrapper } from '@/styles/Page/dashboard';
 
 import Layout from '@/components/Global/Layout';
 import DashboardContainer from '@/components/Pages/Dashboard';
+import DashboardContainerMobile from '@/components/Pages/Dashboard/DashboardMobile';
 import SEO from '@/components/Global/SEO';
 
 const Dashboard: NextPage = () => {
@@ -15,6 +16,7 @@ const Dashboard: NextPage = () => {
         <PageWrapper>
           <PageContainer>
             <DashboardContainer />
+            <DashboardContainerMobile />
           </PageContainer>
         </PageWrapper>
       </Layout>

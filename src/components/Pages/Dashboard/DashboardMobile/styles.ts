@@ -5,8 +5,10 @@ export const Wrapper = styled.div`
 
   width: 100%;
 
+  display: none;
+
   @media (max-width: 550px) {
-    display: none;
+    display: flex;
   }
 `;
 
