@@ -5,10 +5,12 @@ import { PageContainer, PageWrapper } from '@/styles/Page/dashboard';
 
 import Layout from '@/components/Global/Layout';
 import DashboardContainer from '@/components/Pages/Dashboard';
+import SEO from '@/components/Global/SEO';
 
 const Dashboard: NextPage = () => {
   return (
     <>
+      <SEO title="Dashboard" />
       <Layout>
         <PageWrapper>
           <PageContainer>
