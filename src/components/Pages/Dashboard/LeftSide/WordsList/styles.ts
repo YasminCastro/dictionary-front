@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   border: 1px solid black;
-  padding: 6px;
+  padding: 10px;
 
   height: 400px;
   max-width: 800px;
@@ -19,4 +19,5 @@ export const WordContainer = styled.div`
   width: 100%;
   padding: 8px 6px;
   border: 1px solid black;
+  text-align: center;
 `;

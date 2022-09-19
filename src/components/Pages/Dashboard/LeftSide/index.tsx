@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container } from './styles';
+import { Container, TableButtonContainer, ButtonContainer } from './styles';
 import WordsList from './WordsList';
 
 export interface WordsList {
@@ -16,6 +16,26 @@ const LeftSide: React.FC = () => {
 
   return (
     <Container>
+      <TableButtonContainer>
+        <ButtonContainer
+          onClick={() => setSelectedTabela('words-list')}
+          selected={selectedTable === 'words-list'}
+        >
+          Word list
+        </ButtonContainer>
+        <ButtonContainer
+          onClick={() => setSelectedTabela('favorites')}
+          selected={selectedTable === 'favorites'}
+        >
+          Favorites
+        </ButtonContainer>
+        <ButtonContainer
+          onClick={() => setSelectedTabela('history')}
+          selected={selectedTable === 'history'}
+        >
+          History
+        </ButtonContainer>
+      </TableButtonContainer>
       {selectedTable === 'words-list' && <WordsList />}
       {/* {selectedTable === 'favorites' && <TableSection />}
       {selectedTable === 'history' && <TableSection />} */}

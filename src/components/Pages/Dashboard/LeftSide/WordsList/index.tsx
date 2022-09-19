@@ -38,7 +38,7 @@ const WordsList: React.FC = () => {
         <TableContainer>
           {words.map((word) => (
             <WordContainer>
-              <p key={word}>{word}</p>
+              <div key={word}>{word}</div>
             </WordContainer>
           ))}
         </TableContainer>
