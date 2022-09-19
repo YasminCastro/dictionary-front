@@ -3,15 +3,15 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 500px;
 `;
-export const Container = styled.div``;
+export const Container = styled.div`
+  background: white;
+  border: 1px solid black;
+  padding: 15px;
+`;
 
 export const WordContainer = styled.div`
   width: 100%;
-
-  max-width: 500px;
-  max-height: 500px;
 
   display: flex;
   flex-direction: column;

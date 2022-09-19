@@ -1,7 +1,7 @@
 import { useWord } from '@/providers/WordProvider';
 import ReactPlayer from 'react-player';
 import { ErrorMessage } from '@/styles/Global/global';
-import { AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineStar, AiOutlineCloseCircle } from 'react-icons/ai';
 import {
   Container,
   MeaningsContainer,
@@ -12,10 +12,12 @@ import {
 import ButtonsContainer from './ButtonsContainer';
 import api from '@/backend/api';
 import { useEffect, useState } from 'react';
+import { useRenderWordsContainer } from '@/providers/RenderWordsContainerProvider';
 
 const RightSide: React.FC = () => {
   const { wordDefinition, wordError } = useWord();
   const [isFavoriteWord, setIsFavoriteWord] = useState(false);
+  const { setRenderWordContainer } = useRenderWordsContainer();
 
   useEffect(() => {
     const fetchFavoriteWords = async () => {
@@ -39,19 +41,24 @@ const RightSide: React.FC = () => {
     await api.post(`/entries/en/${wordDefinition.word}/favorite`);
 
     setIsFavoriteWord(true);
-    window.location.reload();
   };
 
   const handleRemoveFavoriteWord = async () => {
     await api.delete(`/entries/en/${wordDefinition.word}/unfavorite`);
 
     setIsFavoriteWord(false);
-    window.location.reload();
   };
 
   return (
     <Wrapper>
       <Container>
+        <a
+          onClick={() => {
+            setRenderWordContainer(false);
+          }}
+        >
+          <AiOutlineCloseCircle size={20} />
+        </a>
         <WordContainer>
           {wordError ? (
             <ErrorMessage>{wordError}</ErrorMessage>

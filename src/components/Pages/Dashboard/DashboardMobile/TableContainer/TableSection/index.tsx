@@ -4,6 +4,7 @@ import { Container, TableContainer, WordContainer } from './styles';
 import InfiniteScroll from 'react-infinite-scroller';
 import { useWord } from '@/providers/WordProvider';
 import Router from 'next/router';
+import { useRenderWordsContainer } from '@/providers/RenderWordsContainerProvider';
 
 interface IProps {
   tableName: string;
@@ -11,9 +12,11 @@ interface IProps {
 
 const TableSection: React.FC<IProps> = ({ tableName }) => {
   const { searchWord, setSearchWord, setAllWords } = useWord();
+  const { setRenderWordContainer } = useRenderWordsContainer();
   const [page, setPage] = useState(1);
   const [words, setWords] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
+
   const url = getApiUrl(tableName);
 
   useEffect(() => {
@@ -66,6 +69,7 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
               <WordContainer
                 onClick={() => {
                   setSearchWord(word);
+                  setRenderWordContainer(true);
                 }}
                 key={index}
               >
