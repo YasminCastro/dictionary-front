@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../GlobalStyles';
 
-export const SubmitErrorMessage = styled.span`
+export const ErrorMessage = styled.span`
   margin-top: 6px;
 
   font-size: 14px;

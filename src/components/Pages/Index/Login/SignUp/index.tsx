@@ -4,7 +4,7 @@ import { Button, TextField } from '@mui/material';
 
 import { IStepActive } from '..';
 
-import { SubmitErrorMessage } from '@/styles/Global/global';
+import { ErrorMessage } from '@/styles/Global/global';
 import { Container } from './styles';
 
 interface IProps {
@@ -21,7 +21,7 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post('/api/signup', {
+      await axios.post('/api/signup', {
         email,
         password,
         name,
@@ -76,9 +76,9 @@ const SignUp: React.FC<IProps> = ({ setCardActive }) => {
         />
 
         {errorMessage && (
-          <SubmitErrorMessage className="onSubmitErrorMessage">
+          <ErrorMessage className="onSubmitErrorMessage">
             {errorMessage}
-          </SubmitErrorMessage>
+          </ErrorMessage>
         )}
         <Button type="submit" variant="contained" color="primary">
           Cadastre-se

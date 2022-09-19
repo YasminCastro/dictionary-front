@@ -1,5 +1,6 @@
 import { useWord } from '@/providers/WordProvider';
 import ReactPlayer from 'react-player';
+import { ErrorMessage } from '@/styles/Global/global';
 import {
   ButtonsContainer,
   Container,
@@ -18,8 +19,14 @@ const RightSide: React.FC = () => {
     <Wrapper>
       <Container>
         <WordContainer>
-          <div>{wordDefinition.word}</div>
-          <div>{wordDefinition.phonetic}</div>
+          {wordError ? (
+            <ErrorMessage>{wordError}</ErrorMessage>
+          ) : (
+            <>
+              <p>{wordDefinition.word}</p>
+              <p>{wordDefinition.phonetic}</p>
+            </>
+          )}
         </WordContainer>
         <PlayerContainer>
           {wordDefinition.audio && (

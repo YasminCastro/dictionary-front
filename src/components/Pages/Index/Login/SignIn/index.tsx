@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material';
 import { IStepActive } from '..';
 import { Container } from './styles';
 import { useContext, useState } from 'react';
-import { SubmitErrorMessage } from '@/styles/Global/global';
+import { ErrorMessage } from '@/styles/Global/global';
 import { AuthContext } from '@/providers/AuthContext';
 
 interface IProps {
@@ -56,9 +56,9 @@ const SignIn: React.FC<IProps> = ({ setCardActive }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         {errorMessage && (
-          <SubmitErrorMessage className="onSubmitErrorMessage">
+          <ErrorMessage className="onSubmitErrorMessage">
             {errorMessage}
-          </SubmitErrorMessage>
+          </ErrorMessage>
         )}
         <Button type="submit" variant="contained" color="primary">
           Entrar
