@@ -4,15 +4,13 @@ export const Container = styled.div`
   border: 1px solid black;
   padding: 6px;
 
-  max-height: 600px;
+  height: 400px;
   max-width: 800px;
 
   overflow-y: scroll;
 `;
 
 export const TableContainer = styled.div`
-  border: 1px solid black;
-
   display: grid;
   grid-template-columns: 180px 180px 180px 180px;
 `;
