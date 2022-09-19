@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
 `;
 export const Container = styled.div``;
 

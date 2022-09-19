@@ -67,8 +67,8 @@ const RightSide: React.FC = () => {
             <ReactPlayer
               url={wordDefinition.audio}
               controls={true}
-              width="500px"
-              height="40px"
+              width="100%"
+              height="35px"
             />
           )}
         </PlayerContainer>

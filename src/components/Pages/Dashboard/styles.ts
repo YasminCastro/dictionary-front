@@ -19,4 +19,10 @@ export const Container = styled.div`
   @media (max-width: 1500px) {
     margin: 32px 50px;
   }
+
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;

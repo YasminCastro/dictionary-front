@@ -14,6 +14,22 @@ export const Container = styled.div`
 export const TableContainer = styled.div`
   display: grid;
   grid-template-columns: 180px 180px 180px 180px;
+
+  @media (max-width: 1360px) {
+    grid-template-columns: 130px 130px 130px 130px;
+  }
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 130px 130px 130px;
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: 130px 130px 130px 130px;
+  }
+
+  @media (max-width: 610px) {
+    grid-template-columns: 130px 130px 130px;
+  }
 `;
 
 export const WordContainer = styled.div`
