@@ -21,10 +21,9 @@ interface IValue {
   searchWord: string;
   setSearchWord: React.Dispatch<React.SetStateAction<string>>;
   wordError: string;
-  setSearchWordIndex: React.Dispatch<React.SetStateAction<number>>;
-  searchWordIndex: number;
-  nextWord: string | null;
-  previousWord: string | null;
+  nextWord: string;
+  previousWord: string;
+  setAllWords: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const WordContext = createContext({} as IValue);
@@ -34,9 +33,9 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
 }) => {
   const [wordDefinition, setWordDefinition] = useState({} as IWord);
   const [searchWord, setSearchWord] = useState('');
-  const [searchWordIndex, setSearchWordIndex] = useState(1);
-  const [nextWord, setNextWord] = useState(null);
-  const [previousWord, setPreviousWord] = useState(null);
+  const [allWords, setAllWords] = useState('');
+  const [previousWord, setPreviousWord] = useState('');
+  const [nextWord, setNextWord] = useState('');
   const [wordError, setWordError] = useState('');
 
   useEffect(() => {
@@ -73,6 +72,13 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
           });
           setWordError('');
 
+          const randomNumber = Math.floor(
+            Math.random() * (allWords.length - 0 + 1) + 0
+          );
+
+          setNextWord(allWords[randomNumber]);
+          // setPreviousWord(allWords[randomNumber]);
+
           if (searchWord) {
             Router.push(`/dashboard?word=${searchWord}`);
           }
@@ -99,11 +105,9 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
       searchWord,
       setSearchWord,
       wordError,
-
-      searchWordIndex,
-      setSearchWordIndex,
       nextWord,
       previousWord,
+      setAllWords,
     }),
     [
       wordDefinition,
@@ -111,11 +115,9 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
       searchWord,
       setSearchWord,
       wordError,
-
-      searchWordIndex,
-      setSearchWordIndex,
       nextWord,
       previousWord,
+      setAllWords,
     ]
   );
 

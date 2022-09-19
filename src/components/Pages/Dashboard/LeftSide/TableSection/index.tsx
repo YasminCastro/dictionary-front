@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const TableSection: React.FC<IProps> = ({ tableName }) => {
-  const { searchWord, setSearchWord, setSearchWordIndex } = useWord();
+  const { searchWord, setSearchWord, setAllWords } = useWord();
   const [page, setPage] = useState(1);
   const [words, setWords] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
@@ -32,15 +32,13 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
     const { data } = await api.get(`${url}?page=${page}&limit=40`);
 
     setWords([...words, ...data.results]);
+    if (tableName === 'words-list') {
+      setAllWords([...words, ...data.results]);
+    }
 
     setPage(page + 1);
     setHasMore(data.hasNext);
   }
-
-  const handleOnClick = (word: string, index: number) => {
-    setSearchWord(word);
-    setSearchWordIndex(index);
-  };
 
   return (
     <Container>
@@ -66,7 +64,7 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
             return (
               <WordContainer
                 onClick={() => {
-                  handleOnClick(word, index);
+                  setSearchWord(word);
                 }}
                 key={index}
               >

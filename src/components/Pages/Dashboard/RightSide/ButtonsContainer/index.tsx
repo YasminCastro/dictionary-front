@@ -4,8 +4,6 @@ import { Container, Wrapper } from './styles';
 const ButtonsContainer: React.FC = () => {
   const { setSearchWord, nextWord, previousWord } = useWord();
 
-  console.log('WORDS', nextWord, previousWord);
-
   return (
     <Wrapper>
       <Container>
