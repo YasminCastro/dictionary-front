@@ -42,29 +42,24 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
         }
       >
         <TableContainer>
-          {words.map((word) => (
-            <>
-              {tableName === 'words-list' ? (
-                <WordContainer
-                  onClick={() => {
-                    setSearchWord(word);
-                  }}
-                  key={word}
-                >
-                  {word}
-                </WordContainer>
-              ) : (
-                <WordContainer
-                  onClick={() => {
-                    setSearchWord(word.word);
-                  }}
-                  key={word.word}
-                >
-                  {word.word}
-                </WordContainer>
-              )}
-            </>
-          ))}
+          {words.map((wordRaw) => {
+            let word = wordRaw;
+
+            if (tableName !== 'words-list') {
+              word = wordRaw.word;
+            }
+
+            return (
+              <WordContainer
+                onClick={() => {
+                  setSearchWord(word);
+                }}
+                key={word}
+              >
+                {word}
+              </WordContainer>
+            );
+          })}
         </TableContainer>
       </InfiniteScroll>
     </Container>
