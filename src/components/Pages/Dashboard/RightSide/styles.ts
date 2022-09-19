@@ -28,8 +28,26 @@ export const PlayerContainer = styled.div`
   margin-top: 24px;
 `;
 
-export const MeaningsContainer = styled.div`
+export const MeaningsContainer = styled.div<{ isFavoriteWord: boolean }>`
   margin-top: 24px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    a {
+      height: 20px;
+
+      color: ${(props) =>
+        props.isFavoriteWord ? colors.yellow : colors.black};
+
+      &:hover {
+        color: ${colors.yellow};
+        cursor: pointer;
+      }
+    }
+  }
 
   p {
     margin: 12px 0px;

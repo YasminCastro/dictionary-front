@@ -32,6 +32,7 @@ const TableSection: React.FC<IProps> = ({ tableName }) => {
     const { data } = await api.get(`${url}?page=${page}&limit=40`);
 
     setWords([...words, ...data.results]);
+
     if (tableName === 'words-list') {
       setAllWords([...words, ...data.results]);
     }
