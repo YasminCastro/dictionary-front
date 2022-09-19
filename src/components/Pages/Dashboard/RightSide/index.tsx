@@ -1,4 +1,5 @@
 import { useWord } from '@/providers/WordProvider';
+import ReactPlayer from 'react-player';
 import {
   ButtonsContainer,
   Container,
@@ -21,11 +22,18 @@ const RightSide: React.FC = () => {
           <div>{wordDefinition.phonetic}</div>
         </WordContainer>
         <PlayerContainer>
-          <div>{wordDefinition.audio}</div>
+          {wordDefinition.audio && (
+            <ReactPlayer
+              url={wordDefinition.audio}
+              controls={true}
+              width="500px"
+              height="40px"
+            />
+          )}
         </PlayerContainer>
         <MeaningsContainer>
-          <h3>Meanings</h3>
-          <div>{wordDefinition.meaning}</div>
+          <h2>Meanings</h2>
+          <p>{wordDefinition.meaning}</p>
         </MeaningsContainer>
         <ButtonsContainer>
           <button>Voltar</button>
