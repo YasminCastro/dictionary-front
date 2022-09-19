@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import FavoritesLists from './FavoritesList';
-import HistoryList from './HistoryList';
 import { Container, TableButtonContainer, ButtonContainer } from './styles';
-import WordsList from './WordsList';
+import TableSection from './TableSection';
 
 export interface WordsList {
   hasNext: boolean;
@@ -14,33 +12,40 @@ export interface WordsList {
 }
 
 const LeftSide: React.FC = () => {
-  const [selectedTable, setSelectedTabela] = useState('words-list');
+  const wordList = 'words-list';
+  const favorites = 'favorites';
+  const history = 'history';
+
+  const [selectedTable, setSelectedTabela] = useState(
+    'favorites' as 'words-list' | 'favorites' | 'history'
+  );
 
   return (
     <Container>
       <TableButtonContainer>
         <ButtonContainer
-          onClick={() => setSelectedTabela('words-list')}
-          selected={selectedTable === 'words-list'}
+          onClick={() => setSelectedTabela(wordList)}
+          selected={selectedTable === wordList}
         >
           Word list
         </ButtonContainer>
         <ButtonContainer
-          onClick={() => setSelectedTabela('favorites')}
-          selected={selectedTable === 'favorites'}
+          onClick={() => setSelectedTabela(favorites)}
+          selected={selectedTable === favorites}
         >
           Favorites
         </ButtonContainer>
         <ButtonContainer
-          onClick={() => setSelectedTabela('history')}
-          selected={selectedTable === 'history'}
+          onClick={() => setSelectedTabela(history)}
+          selected={selectedTable === history}
         >
           History
         </ButtonContainer>
       </TableButtonContainer>
-      {selectedTable === 'words-list' && <WordsList />}
-      {selectedTable === 'favorites' && <FavoritesLists />}
-      {selectedTable === 'history' && <HistoryList />}
+
+      {selectedTable === wordList && <TableSection tableName={wordList} />}
+      {selectedTable === favorites && <TableSection tableName={favorites} />}
+      {selectedTable === history && <TableSection tableName={history} />}
     </Container>
   );
 };
