@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import FavoritesLists from './FavoritesList';
+import HistoryList from './HistoryList';
 import { Container, TableButtonContainer, ButtonContainer } from './styles';
 import WordsList from './WordsList';
 
@@ -37,8 +39,8 @@ const LeftSide: React.FC = () => {
         </ButtonContainer>
       </TableButtonContainer>
       {selectedTable === 'words-list' && <WordsList />}
-      {/* {selectedTable === 'favorites' && <TableSection />}
-      {selectedTable === 'history' && <TableSection />} */}
+      {selectedTable === 'favorites' && <FavoritesLists />}
+      {selectedTable === 'history' && <HistoryList />}
     </Container>
   );
 };

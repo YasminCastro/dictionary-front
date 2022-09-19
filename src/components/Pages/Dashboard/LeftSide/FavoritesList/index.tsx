@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Container, TableContainer, WordContainer } from './styles';
 import InfiniteScroll from 'react-infinite-scroller';
 
-const WordsList: React.FC = () => {
+const FavoritesLists: React.FC = () => {
   const [words, setWords] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -13,7 +13,7 @@ const WordsList: React.FC = () => {
   }, []);
 
   async function getWords() {
-    const { data } = await api.get(`/entries/en?page=${page}&limit=40`);
+    const { data } = await api.get(`/user/me/favorites?page=${page}&limit=40`);
 
     console.log(data);
 
@@ -31,14 +31,14 @@ const WordsList: React.FC = () => {
         useWindow={false}
         loader={
           <div className="loader" key={0}>
-            Carregando ...
+            Carregando...
           </div>
         }
       >
         <TableContainer>
           {words.map((word) => (
             <WordContainer>
-              <div key={word}>{word}</div>
+              <div key={word.word}>{word.word}</div>
             </WordContainer>
           ))}
         </TableContainer>
@@ -47,4 +47,4 @@ const WordsList: React.FC = () => {
   );
 };
 
-export default WordsList;
+export default FavoritesLists;

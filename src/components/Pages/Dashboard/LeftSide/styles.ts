@@ -15,4 +15,8 @@ export const ButtonContainer = styled.div<{ selected: boolean }>`
   border-left: 1px solid black;
   padding: 8px;
   background: ${({ selected }) => (selected ? 'transparent' : colors.gray400)};
+
+  :hover {
+    cursor: pointer;
+  }
 `;
