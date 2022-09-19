@@ -27,6 +27,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 460px) {
+    padding: 4px 0px;
+  }
 `;
 
 export const HeaderLeft = styled.div`
@@ -45,6 +49,10 @@ export const HeaderLeft = styled.div`
     display: flex;
     gap: 16px;
     align-items: center;
+  }
+
+  @media (max-width: 460px) {
+    margin-left: 12px;
   }
 `;
 
