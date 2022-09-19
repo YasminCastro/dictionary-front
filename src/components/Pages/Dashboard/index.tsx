@@ -1,13 +1,13 @@
-import LeftSide from './LeftSide';
-import RightSide from './RightSide';
+import TableContainer from './TableContainer';
+import WordContainer from './WordContainer';
 import { Container, Wrapper } from './styles';
 
 const DashboardContainer: React.FC = () => {
   return (
     <Wrapper>
       <Container>
-        <RightSide />
-        <LeftSide />
+        <WordContainer />
+        <TableContainer />
       </Container>
     </Wrapper>
   );
