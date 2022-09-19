@@ -13,8 +13,6 @@ import {
 const RightSide: React.FC = () => {
   const { wordDefinition, wordError, setSearchWord } = useWord();
 
-  console.log('wordDefinition', wordDefinition);
-
   return (
     <Wrapper>
       <Container>

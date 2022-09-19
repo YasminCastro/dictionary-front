@@ -37,6 +37,8 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
       try {
         const { data } = await api.get(`/entries/en/${searchWord}`);
 
+        console.log(data);
+
         if (data) {
           let phonetic = '';
           let audio = '';
@@ -48,7 +50,8 @@ export const WordProvider: React.FC<{ children?: React.ReactNode }> = ({
 
           if (data.phonetics && data.phonetics.length > 0) {
             const audioObject = data.phonetics.find((x: any) => x.audio !== '');
-            audio = audioObject.audio;
+
+            if (audioObject) audio = audioObject.audio;
           }
 
           if (data.meanings && data.meanings.length > 0) {
