@@ -13,14 +13,16 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
 
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
+  gap: 70px;
 
   width: 100%;
 
   margin: 64px 100px;
 
   @media (max-width: 1500px) {
+    gap: 30px;
+
     margin: 32px 50px;
   }
 
