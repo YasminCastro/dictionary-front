@@ -15,8 +15,6 @@ const FavoritesLists: React.FC = () => {
   async function getWords() {
     const { data } = await api.get(`/user/me/favorites?page=${page}&limit=40`);
 
-    console.log(data);
-
     setWords([...words, ...data.results]);
     setPage(page + 1);
     setHasMore(data.hasNext);
